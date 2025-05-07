@@ -1,0 +1,26 @@
+1. tabel penyimpanan role
+
+create table role(
+	id serial primary key,
+	role varchar(30) unique,
+	operation text[]
+);
+
+2. kolom roleid
+alter table karyawan 
+add column roleid int
+constraint role_id_fk references role(id)
+;
+
+
+3. kolom deskripsi di laporan
+alter table laporan add column deskripsi text
+
+4. tabel kehadiran untuk menyimpan jatah overtime dan jumlah kehadiran
+create table kehadiran(
+	id serial primary key,
+	idk integer references karyawan(id),
+	year smallint not null,
+	total_jam_overtime integer,
+	total_hari_absensi integer
+);
