@@ -1,15 +1,15 @@
 const { Router } = require("express");
 const cont = require("./cont");
-const verifyToken = require("../../verifyToken");  // Middleware untuk memverifikasi token
+const verifyToken = require("../../verifyToken");
 
 const router = Router();
 
-// Gunakan verifyToken middleware jika perlu verifikasi
 router.use(verifyToken);
 
-// Route untuk menerima data aktivitas
 router.post("/activity", cont.postActivity);
 
 router.get("/activity/:idk", cont.getActivity);
+
+// Tidak perlu route untuk snapshot karena otomatis berjalan lewat cron
 
 module.exports = router;

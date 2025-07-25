@@ -22,15 +22,28 @@ const insertActivityQuery = `
 `;
 
 // Query untuk mengambil data aktivitas berdasarkan idk
-const getActivityQuery = 
-    `SELECT mouse_clicks, keystrokes, visited_tabs, created_at
+const getActivityQuery = `
+    SELECT mouse_clicks, keystrokes, visited_tabs, created_at
     FROM activity_tracker
-    WHERE idk = $1;`;
+    WHERE idk = $1;
+`;
 
+// --- Query baru: ambil semua data activity_tracker ---
+const getAllActivityQuery = `
+    SELECT * FROM activity_tracker;
+`;
+
+// --- Query baru: insert snapshot ke activity_history ---
+const insertActivityHistoryQuery = `
+    INSERT INTO activity_history (snapshot, created_at)
+    VALUES ($1, NOW());
+`;
 
 module.exports = {
     checkActivityQuery,
     updateActivityQuery,
     insertActivityQuery,
-    getActivityQuery
+    getActivityQuery,
+    getAllActivityQuery,
+    insertActivityHistoryQuery
 };
