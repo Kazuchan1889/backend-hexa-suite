@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const postAbsensiToday = require("../src/Absensi/cont");
+const postAbsensiToday = require("../");
 const pool = require("../db");
 const check = require("../public");
 const kehadiran = require("./Kehadiran/cont");
